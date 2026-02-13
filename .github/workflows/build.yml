@@ -9,18 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    container:
+      image: ghcr.io/kivy/buildozer:latest
+
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y python3-pip zip unzip openjdk-17-jdk
-        pip install --upgrade pip
-        pip install buildozer==1.4.0 cython
+      - name: Build with Buildozer
+        run: buildozer android debug
 
-    - name: Build APK
-      env:
-        ANDROID_SDK_ROOT: /home/runner/.buildozer/android/platform/android-sdk
-      run: |
-        buildozer android debug
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: bin/*.apk
