@@ -14,7 +14,8 @@ warn_on_root = 0
 
 
 [android]
-api = 31
+api = 33
 minapi = 24
 ndk_api = 24
 permissions = INTERNET, CAMERA
+android.build_tools_version = 33.0.2
