@@ -16,6 +16,7 @@ warn_on_root = 0
 [android]
 api = 33
 minapi = 24
-ndk_api = 24
-permissions = INTERNET, CAMERA
-android.build_tools_version = 33.0.2
+ndk = 25b
+android.gradle_dependencies =
+android.accept_sdk_license = True
+
